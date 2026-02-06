@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Bava ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4b5c, #ff9a9e);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.box {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  text-align: center;
+  width: 340px;
+  box-shadow: 0 0 25px rgba(255,0,0,0.4);
+  z-index: 1;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 45px;
+  color: #ff4b5c;
+}
+
+p {
+  font-size: 18px;
+}
+
+button {
+  padding: 10px 25px;
+  border-radius: 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: #ff4b5c;
+  color: white;
+}
+
+#no {
+  background: #ddd;
+  position: absolute;
+}
+
+#musicBtn {
+  background: #ff9a9e;
+  color: white;
+}
+
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 22px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box">
+  <h1>Bava ❤️</h1>
+  <p>Will u be my Valentine? <br> For my life .. 💕</p>
+
+  <button id="musicBtn" onclick="playMusic()">Play Music 🎵</button><br>
+
+  <button id="yes" onclick="yesClick()">Yes</button>
+  <button id="no" onmouseover="moveNo()">No</button>
+</div>
+
+<script>
+function playMusic(){
+const song =
+  document.getElementById("bgm");
+song.currentTime =70;
+song.play();
+setTimeout(() => {
+song.pause();
+},70000);
+}
+
+function yesClick() {
+  document.body.innerHTML = `
+    <h1 style="font-family:'Great Vibes',cursive; color:white; font-size:50px;">
+      ❤️ I Love You Bava ❤️
+    </h1>
+    <h2 style="color:white;">Forever your Valentine 💕<br>– Chandu</h2>
+  `;
+}
+
+function moveNo() {
+  const noBtn = document.getElementById("no");
+  noBtn.style.left = Math.random() * 80 + "vw";
+  noBtn.style.top = Math.random() * 80 + "vh";
+}
+
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "❤";
+  h.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}, 250);
+</script>
+
+</body>
+</html>
